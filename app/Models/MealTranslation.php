@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MealTranslation extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'decription'];
+    
+    public $timestamps = false;
 }
