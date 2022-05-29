@@ -10,5 +10,6 @@ class Language extends Model
     use HasFactory;
 
     protected $fillable = ['language','short'];
+    public $timestamps = false;
 
 }
