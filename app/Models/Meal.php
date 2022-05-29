@@ -12,5 +12,5 @@ class Meal extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
-    public $translatedAttributes = ['title','description'];
+    public $translatedAttributes = ['categorie_id'];
 }
