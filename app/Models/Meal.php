@@ -31,7 +31,7 @@ class Meal extends Model
         return $this->belongsToMany(Ingredient::class, 'ingredients_meals', 'meal_id', 'ingredient_id');
     }
 
-    public function category(): BelongsTo
+    public function categories(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
