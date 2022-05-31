@@ -18,9 +18,11 @@ class CreateMealsTable extends Migration
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->foreignId('category_id')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')
+                ->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')
+                ->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes(); 
-            $table->index(['deleted_at']);
 
             $table->foreign('category_id')
                 ->references('id')
