@@ -4,17 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Ingredient extends Model implements TranslatableContract
+
+class Ingredient extends Model
 {
     use HasFactory;
-    use Translatable;
 
-    public $translatedAttributes = ['title'];
-    public $timestamps = false;
+    protected $table = 'ingredients';
+
+    protected $with = ['ingredient_translations'];
 
     protected $fillable = ['slug'];
 
+
+    public function meals(): BelongsToMany
+    {
+        return $this->belongsToMany(Meal::class, 'ingredients_meals', 'ingredient_id', 'meal_id');
+    }
+
+
+    public function ingredientTranslations(): HasMany
+    {
+        return $this->hasMany(IngredientTranslation::class)->where('locale', '=', App::getLocale());
+    }
 }

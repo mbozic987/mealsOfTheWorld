@@ -4,17 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends Model implements TranslatableContract
+
+class Category extends Model
 {
     use HasFactory;
-    use Translatable;
 
-    public $translatedAttributes = ['title'];
-    public $timestamps = false;
+    protected $table = 'categories';
+
+    protected $with = ['category_translations'];
 
     protected $fillable = ['slug'];
 
+
+    public function meals(): HasMany
+    {
+        return $this->hasMany(Meal::class);
+    }
+
+
+    public function categoryTranslations(): HasMany
+    {
+        return $this->hasMany(CategoryTranslation::class)->where('locale', '=', App::getLocale());
+    }
 }
