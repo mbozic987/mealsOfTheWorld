@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class IngredientSeeder extends Seeder
 {
@@ -13,6 +15,12 @@ class IngredientSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Ingredient::factory(100)->create();
-    }
+        
+        for($i=1;$i<=10;$i++){
+            DB::table('ingredients')->insert([
+                'slug' => 'IngSlug' . $i
+            ]);
+        }
+        
+    } 
 }

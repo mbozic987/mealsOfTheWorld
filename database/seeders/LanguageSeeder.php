@@ -15,14 +15,14 @@ class LanguageSeeder extends Seeder
     public function run()
     {
         $language = [
-            ['language' => 'English', 'code' => 'en'],
-            ['language' => 'Hrvatski', 'code' => 'hr']   
+            ['language' => 'English', 'lang_code' => 'en'],
+            ['language' => 'Hrvatski', 'lang_code' => 'hr']   
         ];
 
         foreach ($language as $lang) {
             DB::table('languages')->insert([
                 'language' => $lang['language'],
-                'short' => $lang['code']
+                'lang_code' => $lang['lang_code']
             ]);
         }
     }

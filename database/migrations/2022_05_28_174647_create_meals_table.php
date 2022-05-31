@@ -17,12 +17,12 @@ class CreateMealsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
-            $table->foreignId('cat_id')->nullable();
+            $table->foreignId('category_id')->nullable();
             $table->timestamps();
             $table->softDeletes(); 
             $table->index(['deleted_at']);
 
-            $table->foreign('cat_id')
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');

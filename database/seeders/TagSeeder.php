@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TagSeeder extends Seeder
 {
@@ -13,6 +14,12 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Tag::factory(50)->create();
-    }
+        
+        for($i=1;$i<=5;$i++){
+            DB::table('tags')->insert([
+                'slug' => 'tagSlug' . $i
+            ]);
+        }
+        
+    }  
 }

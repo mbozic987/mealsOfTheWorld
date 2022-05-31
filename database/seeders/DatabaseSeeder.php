@@ -15,7 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(LanguageSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(TagTranslationSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(CategoryTranslationSeeder::class);
         $this->call(IngredientSeeder::class);
+        $this->call(IngredientTranslationSeeder::class);
+        $this->call(MealSeeder::class);
+        $this->call(MealTranslationSeeder::class);
+        $this->call(IngredientMealSeeder::class);
+        $this->call(MealTagSeeder::class);
     }
 }

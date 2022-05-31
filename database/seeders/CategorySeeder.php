@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -13,6 +14,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Category::factory(20)->create();
-    }
+    
+        for($i=1;$i<=5;$i++){
+            DB::table('categories')->insert([
+                'slug' => 'catSlug' . $i
+            ]);
+        }
+    
+    }  
 }
