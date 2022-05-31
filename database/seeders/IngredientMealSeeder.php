@@ -17,7 +17,7 @@ class IngredientMealSeeder extends Seeder
     {
         for($i=1;$i<=6;$i++){
             for($j=1;$j<=rand(1,10);$j++){
-                DB::table('meals_tags')->insert([
+                DB::table('ingredients_meals')->insert([
                     'meal_id' => $i,
                     'ingredient_id' => $j
                 ]);

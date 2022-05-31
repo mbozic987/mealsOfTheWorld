@@ -14,10 +14,10 @@ class MealSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i=5;$i++){
-            if($i=0){
+        for($i=0;$i<=5;$i++){
+            if($i==0){
                 DB::table('meals')->insert([
-                    'category_id' => 0,
+                    'category_id' => null,
                 ]);
             }else{
                 DB::table('meals')->insert([

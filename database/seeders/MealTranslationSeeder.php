@@ -18,16 +18,18 @@ class MealTranslationSeeder extends Seeder
         for($i=1;$i<=6;$i++){
             DB::table('meal_translations')->insert([
                 'title' => 'Naslov za ' . $i . '. jelo',
+                'description' => 'Opis ' . $i . '. jela',
                 'meal_id' => $i,
-                'locale' => 'hr',
+                'locale' => 'hr'
             ]);
         }
 
         for($i=1;$i<=5;$i++){
             DB::table('meal_translations')->insert([
                 'title' => 'Title for ' . $i . '. meal',
+                'description' => 'Description of meal no. ' . $i,
                 'meal_id' => $i,
-                'locale' => 'en',
+                'locale' => 'en'
             ]);
         }
         
