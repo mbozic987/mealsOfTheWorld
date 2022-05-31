@@ -20,8 +20,8 @@ class CreateIngredientsMealsTable extends Migration
             ->on('meals')
             ->onDelete('cascade');
 
-            $table->foreignId('ingredients_id');
-            $table->foreign('ingredients_id')
+            $table->foreignId('ingredient_id');
+            $table->foreign('ingredient_id')
             ->references('id')
             ->on('ingredients')
             ->onDelete('cascade');

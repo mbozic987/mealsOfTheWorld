@@ -15,6 +15,7 @@ class CreateIngredientsTable extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
             $table->string('slug')->unique();
         });
     }

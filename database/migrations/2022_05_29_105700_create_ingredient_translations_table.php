@@ -14,14 +14,16 @@ class CreateIngredientTranslationsTable extends Migration
     public function up()
     {
         Schema::create('ingredient_translations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('locale')->index();
-            
+            $table->id('id');
+            $table->string('title');  
             $table->foreignId('ingredient_id');
-            $table->unique(['ingredient_id', 'locale']);
-            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
+            $table->char('locale', 2)->index();
+            $table->unique(['ingredient_id','locale']);
 
-            $table->string('title');
+            $table->foreign('ingredient_id')
+                ->references('id')
+                ->on('ingredients')
+                ->onDelete('cascade');
         });
     }
 

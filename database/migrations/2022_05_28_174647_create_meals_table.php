@@ -15,10 +15,18 @@ class CreateMealsTable extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categorie_id');
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->foreignId('cat_id')->nullable();
             $table->timestamps();
-            $table->softDeletes();
-            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->softDeletes(); 
+            $table->index(['deleted_at']);
+
+            $table->foreign('cat_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
+
             
         });
     }

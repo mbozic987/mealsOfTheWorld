@@ -14,14 +14,16 @@ class CreateTagTranslationsTable extends Migration
     public function up()
     {
         Schema::create('tag_translations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('locale')->index();
-            
+            $table->id('id');
+            $table->string('title');  
             $table->foreignId('tag_id');
-            $table->unique(['tag_id', 'locale']);
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->char('locale', 2)->index();
+            $table->unique(['tag_id','locale']);
 
-            $table->string('title');
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
+                ->onDelete('cascade');
         });
     }
 

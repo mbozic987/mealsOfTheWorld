@@ -15,18 +15,17 @@ class CreateMealTranslationsTable extends Migration
     {
         Schema::create('meal_translations', function (Blueprint $table) {
             // mandatory fields
-            $table->bigIncrements('id');
-            $table->string('locale')->index();
-
-
-            // Foreign key to the main model
-            $table->foreignId('meal_id');
-            $table->unique(['meal_id', 'locale']);
-            $table->foreign('meal_id')->references('id')->on('meals')->onDelete('cascade');
-
-            // Actual fields you want to translate
+            $table->id('id');
             $table->string('title');
             $table->longText('description');
+            $table->foreignId('meal_id');
+            $table->char('locale', 2)->index();
+            $table->unique(['meal_id','locale']);
+            
+            $table->foreign('meal_id')
+                ->references('id')
+                ->on('meals')
+                ->onDelete('cascade');
         });
     }
 
