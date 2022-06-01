@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\MealApi;
 use Illuminate\Http\Request;
+use App\Models\Meal;
 use App\Http\Resources\MealApiResource;
+use App\Http\Request\MealApiRequest;
 
 class MealsApiController extends Controller
 {
@@ -13,9 +15,10 @@ class MealsApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Meal $meal)
     {
-        return 'Hello there';
+        dd($request);
+        return MealApiResource::collection(Meal::all());
     }
 
     /**
