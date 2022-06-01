@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\App;
+
 
 
 class Meal extends Model
@@ -36,7 +38,7 @@ class Meal extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function meals_translations(): HasMany
+    public function meal_translations(): HasMany
     {
         return $this->hasMany(MealTranslation::class)->where('locale', '=', App::getLocale());
     }
